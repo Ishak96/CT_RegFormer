@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 
-import SwinTransformer as swin
+import models.SwinTransformer as swin
 
 class Transformer(nn.Module):
     def __init__(self, img_size=256, embed_dim=96, depths=[2], num_heads=[3],

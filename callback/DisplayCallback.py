@@ -26,7 +26,7 @@ class DisplayCallback(Callback):
         d = d.to(pl_module.device)
         with torch.no_grad():
             pl_module.eval()
-            y = pl_module(d[None, ...])
+            y = pl_module(d)
             pl_module.train()
                 
             display_list = [step, d, y_true[None, None, ...], y]

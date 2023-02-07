@@ -13,7 +13,7 @@ from odl.contrib import torch as odl_torch
 from util.utils import *
 from models.LearnFormer import LearnFormer
 
-from torchmetrics import PeakSignalToNoiseRatio, StructuralSimilarity, MeanSquaredError
+from torchmetrics import PeakSignalNoiseRatio, StructuralSimilarityIndexMeasure, MeanSquaredError
 
 class PL_RegFormer(LightningModule):
 
@@ -111,7 +111,7 @@ class PL_RegFormer(LightningModule):
         self.log_dict({"val_learnformer_loss": learnformer_loss}, prog_bar=True, sync_dist=True)
 
     def test_step(self, batch, batch_idx):
-        psnr, ssim, mse = PeakSignalToNoiseRatio(), StructuralSimilarity(), MeanSquaredError()
+        psnr, ssim, mse = PeakSignalNoiseRatio().to(device=batch.device), StructuralSimilarityIndexMeasure(data_range=1.0).to(device=batch.device), MeanSquaredError().to(device=batch.device)
         y_true = torch.rot90(torch.squeeze(batch), -1)
 
         for step in self.STEPS_CONFIGS:

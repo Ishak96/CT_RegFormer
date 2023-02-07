@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from Transformer import Transformer
+from models.Transformer import *
 
 from util.utils import *
 
