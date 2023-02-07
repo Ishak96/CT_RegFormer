@@ -1,6 +1,4 @@
 image_size: 256
 n_its: 12
-n_primal: 5 
-n_dual: 5
 
-optimized_metric: "val_lpd_loss"
+optimized_metric: "val_learnformer_loss"

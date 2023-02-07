@@ -4,7 +4,7 @@ display_callback:
 
 model_checkpoint:
     _target_: pytorch_lightning.callbacks.ModelCheckpoint
-    monitor: "val_lpd_loss" # name of the logged metric which determines when model is improving
+    monitor: "val_learnformer_loss" # name of the logged metric which determines when model is improving
     mode: "min" # "max" means higher metric value is better, can be also "min"
     save_top_k: 1 # save k best models (determined by above metric)
     save_last: True # additionaly always save model from last epoch
@@ -15,8 +15,8 @@ model_checkpoint:
 
 early_stop:
     _target_: pytorch_lightning.callbacks.early_stopping.EarlyStopping
-    monitor: "val_lpd_loss"
-    patience: 30
+    monitor: "val_learnformer_loss"
+    patience: 50
     mode: "min"
 
 learning_rate_monitor: 
